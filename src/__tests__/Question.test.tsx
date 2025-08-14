@@ -128,6 +128,12 @@ describe("That the next button works properly", () => {
             const nextButton = screen.getByRole('button', {name: /next/i});
             fireEvent.click(nextButton);
         }
+
+        const lastAnswer = screen.getByRole('button', {name: questions[questions.length - 1].options[0]});
+        fireEvent.click(lastAnswer);
+
+        let nextButton = screen.queryByRole('button', {name: /next/i});
+        expect(nextButton).not.toBeInTheDocument();
     })
 })
 

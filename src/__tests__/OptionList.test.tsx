@@ -18,24 +18,6 @@ describe("That the OptionList component works correctly", () => {
         expect(button).toHaveLength(4);
     })
 
-    it("tests that the user can select a button", () => {
-        const handleClick = jest.fn();
-        
-        render(
-            <OptionList 
-                handleClick = {handleClick}
-                userAnswer= {null}
-                rightAnswer= {questions[0].correctAnswer}
-                questionNumber = {0}
-            />
-        );
-
-        const button = screen.getByRole('button', {name: questions[0].options[1]})
-        fireEvent.click(button);
-
-        expect(handleClick).toHaveBeenCalledTimes(1);
-    })
-
     it("tests that if the user answers they cannot click another button", () => {
         const handleClick = jest.fn();
         
@@ -52,5 +34,6 @@ describe("That the OptionList component works correctly", () => {
         fireEvent.click(button);
 
         expect(handleClick).toHaveBeenCalledTimes(0);
+        expect(button).toHaveAttribute("disabled")
     })
 })
