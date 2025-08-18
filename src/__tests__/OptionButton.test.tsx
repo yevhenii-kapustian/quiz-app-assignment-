@@ -21,7 +21,7 @@ describe("Tests that the option buttons work", () => {
         expect(button).toHaveTextContent(optionText);
     })
 
-    it("tests that if the user answers right the button turns green", () => {
+    it("tests that if the user answers right the button it get the 'right' class", () => {
         const optionText = "Option 1";
 
         render(
@@ -42,7 +42,7 @@ describe("Tests that the option buttons work", () => {
         expect(button).toHaveClass("right");
     })
 
-    it("tests that if the user answers wrong the button turns red", () => {
+    it("tests that if the user answers wrong the button it gets the 'wrong' class", () => {
         const optionText = "Option 1";
 
         render(
