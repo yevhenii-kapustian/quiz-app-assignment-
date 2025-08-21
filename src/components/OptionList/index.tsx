@@ -1,4 +1,5 @@
 import questions from "@/data/data"
+import OptionButton from "../OptionButton"
 
 type OptionListTypes = {
     handleClick: (answer:string) => void,
@@ -13,16 +14,13 @@ const OptionList = ({handleClick, userAnswer, rightAnswer, questionNumber}:Optio
     return(
         <> 
         {updatedOptions.map((item, index) => (
-            <button key={index}
-                    onClick={() => !userAnswer && handleClick(item)}
-                    disabled={userAnswer ? true : false}
-                    className={
-                        userAnswer && item === rightAnswer ? "right" :
-                        userAnswer && item === userAnswer ? "wrong" : ""
-                    }
-            >
-                {item}
-            </button>
+            <OptionButton
+                key={index}
+                option={item}
+                userAnswer={userAnswer}
+                rightAnswer={rightAnswer}
+                handleClick={() => handleClick(item)}
+            />
         ))}
         </>
     )
