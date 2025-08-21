@@ -7,7 +7,8 @@ type OptionButtonProps = {
 
 const OptionButton = ({option, handleClick, userAnswer, rightAnswer}:OptionButtonProps) => {
     return(
-        <button className={
+        <button data-testid="option-button" 
+                className={
                     userAnswer && option === rightAnswer ? "right" 
                     : userAnswer && option === userAnswer ? "wrong" 
                     : ""
