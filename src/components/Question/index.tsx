@@ -3,42 +3,42 @@
 import questions from "@/data/data"
 import { useState } from "react"
 import OptionButton from "../OptionButton"
+import OptionList from "../OptionList"
+import NextButton from "../NextButton"
 
 const Question = () => {
-    const [questionNumber, setQuestionNumber] = useState<number>(0)
-    const [userAnswer, setUserAnswer] = useState<string[]>([])
-    const [showResults, setShowResults] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState<number>(0)
+  const [userAnswer, setUserAnswer] = useState<string>("")
 
-    const updatedQuestions = questions[questionNumber]
+  const updatedQuestions = questions[questionNumber]
 
-    if (showResults) {
-        const rightCount = userAnswer.filter((item, index) => item === questions[index].correctAnswer).length
-        const wrongCount = questions.length - rightCount
+  const handleClick = (option: string) => {
+    setUserAnswer(option)
+  }
 
-        return(
-            <div>
-                <h3></h3>
-            </div>
-        )
-    }
+  const handleNextQuestion = () => {
+    setUserAnswer("")
+    setQuestionNumber(prev => prev + 1)
+  }
 
+  return (
+    <div>
+      <h2>{`Question ${questionNumber + 1} of ${questions.length}`}</h2>
+      <h3>{updatedQuestions.question}</h3>
+      <div>
+         <OptionList
+          handleClick={handleClick}
+          userAnswer={userAnswer}
+          rightAnswer={updatedQuestions.correctAnswer}
+          questionNumber={questionNumber}
+        />
+      </div>
 
-    return(
-        <div>
-            <h2>Question: {questionNumber + 1} of {questions.length}</h2>
-            <h3>{updatedQuestions.question}</h3>
-            <div>
-                {updatedQuestions.options.map((option, index) => (
-                    <OptionButton key={index}
-                                    option={option}
-                                    userAnswer={userAnswer}
-                                    rightAnswer={updatedQuestions.correctAnswer}
-                                    handleClick={() => handleClick(option)}
-                                    />
-            ))}
-            </div>
-        </div>
-    )
+      {userAnswer && questionNumber < questions.length - 1 && (
+        <NextButton changeQuestion={handleNextQuestion} />
+      )}
+    </div>
+  )
 }
 
 export default Question
