@@ -16,6 +16,10 @@ const OptionList = ({handleClick, userAnswer, rightAnswer, questionNumber}:Optio
             <button key={index}
                     onClick={() => !userAnswer && handleClick(item)}
                     disabled={userAnswer ? true : false}
+                    className={
+                        userAnswer && item === rightAnswer ? "right" :
+                        userAnswer && item === userAnswer ? "wrong" : ""
+                    }
             >
                 {item}
             </button>
