@@ -34,10 +34,10 @@ const Question = () => {
   }
 
   return (
-    <div>
-      <h2>{`Question ${questionNumber + 1} of ${questions.length}`}</h2>
-      <h3>{updatedQuestions.question}</h3>
-      <div>
+    <div className="mt-5 m-auto p-5 w-2/5 text-[#444444] bg-[#FFB897] rounded-2xl">
+      <h2 className="text-center">{`Question ${questionNumber + 1} of ${questions.length}`}</h2>
+      <h3 className="text-2xl font-extrabold text-center">{updatedQuestions.question}</h3>
+      <div className="w-full flex flex-col items-start gap-3">
          <OptionList
           handleClick={handleClick}
           userAnswer={userAnswer}
@@ -49,13 +49,15 @@ const Question = () => {
       {userAnswer && questionNumber < questions.length - 1 ? (
         <NextButton changeQuestion={handleNextQuestion} />
       ): userAnswer && questionNumber === questions.length - 1 ? (
-        <button onClick={handleFinish}>Finish</button>
+        <div className="flex justify-center font-bold">
+          <button className="px-5 py-2 bg-[#F7F7F7] rounded-2xl cursor-pointer" onClick={handleFinish}>Finish</button>
+        </div>
       ):
         ""
       }
 
-      {isFinished && <div>
-        <h5 data-testid="results">Final Results:</h5>
+      {isFinished && <div className="mt-5 flex flex-col items-center">
+        <h5 data-testid="results" className="font-bold">Final Results:</h5>
         <p data-testid="right-answers">Right: {correctCount}</p>
         <p data-testid="wrong-answers">Wrong: {wrongCount}</p>
       </div> }
