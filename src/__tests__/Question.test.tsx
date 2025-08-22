@@ -50,7 +50,7 @@ describe("Tests that the question is rendered", () => {
         expect(correctOption).toBeInTheDocument();
     })
 })
-//
+
 describe("That the next button works properly", () => {
     it("tests that there's a next button but it's not rendered on page load", () => {
         render(<Question />);
@@ -136,7 +136,7 @@ describe("That the next button works properly", () => {
         expect(nextButton).not.toBeInTheDocument();
     })
 })
-//
+
 describe("That the finish button works correctly", () => {
     it("tests that the finish button is not rendered if it's not the last question", () => {
         render(<Question />);
