@@ -36,8 +36,8 @@ const Question = () => {
   return (
     <div className="mt-5 m-auto p-5 w-2/5 text-[#444444] bg-[#FFB897] rounded-2xl">
       <h2 className="text-center">{`Question ${questionNumber + 1} of ${questions.length}`}</h2>
-      <h3 className="text-2xl font-extrabold text-center">{updatedQuestions.question}</h3>
-      <div className="w-full flex flex-col items-start gap-3">
+      <h3 className="text-xl font-extrabold text-center">{updatedQuestions.question}</h3>
+      <div className="mt-3 w-full flex flex-col items-start gap-3">
          <OptionList
           handleClick={handleClick}
           userAnswer={userAnswer}
