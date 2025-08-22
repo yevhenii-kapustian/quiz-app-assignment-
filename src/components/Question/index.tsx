@@ -47,9 +47,11 @@ const Question = () => {
       </div>
 
       {userAnswer && questionNumber < questions.length - 1 ? (
-        <NextButton changeQuestion={handleNextQuestion} />
+        <div className="mt-3 flex justify-start font-bold">
+          <NextButton changeQuestion={handleNextQuestion} />
+        </div>
       ): userAnswer && questionNumber === questions.length - 1 ? (
-        <div className="flex justify-center font-bold">
+        <div className="mt-3 flex justify-center font-bold">
           <button className="px-5 py-2 bg-[#F7F7F7] rounded-2xl cursor-pointer" onClick={handleFinish}>Finish</button>
         </div>
       ):
