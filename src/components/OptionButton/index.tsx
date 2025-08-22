@@ -15,7 +15,7 @@ const OptionButton = ({ option, handleClick, userAnswer, rightAnswer }: OptionBu
       disabled={isDisabled}
       className={
         userAnswer && option === rightAnswer ? "right" :
-        userAnswer && option === userAnswer ? "wrong" : ""
+        userAnswer && option === userAnswer ? "wrong" : "regular"
       }
     >
       {option}

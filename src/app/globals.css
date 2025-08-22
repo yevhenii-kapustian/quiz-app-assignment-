@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+.right {
+    @apply w-full px-5 py-2 bg-[#7DFF8E] rounded-2xl cursor-pointer
+}
+
+.wrong {
+    @apply w-full px-5 py-2 bg-[#FF7D7D] rounded-2xl cursor-pointer
+}
+
+.regular {
+    @apply w-full px-5 py-2 bg-[#F7F7F7] rounded-2xl cursor-pointer
+}
