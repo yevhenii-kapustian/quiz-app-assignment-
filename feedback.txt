@@ -1,0 +1,22 @@
+Feedback on the tests - how could they have been improved:
+    Qustion: 
+        Using different names for result and results may cause test errors:
+            const result = screen.queryByTestId("result");
+            expect(result).not.toBeInTheDocument();
+
+            const result = screen.queryByTestId("results");
+            expect(result).toBeInTheDocument();
+
+    OptionList:
+        You need to make sure that each button displays the correct text:
+            const buttons = screen.getAllByRole('button');
+            expect(buttons).toHaveLength(4);
+
+            buttons.forEach((button, index) => {
+                expect(button).toHaveTextContent(questions[0].options[index]);
+            });
+
+What was missed in the initial tests.
+    Qustion: 
+        Check <h3> with the exact text of the current question from the questions array.
+        Checking that Next and Finish buttons are not displayed at the same time
